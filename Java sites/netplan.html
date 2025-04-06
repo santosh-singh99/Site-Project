@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Plan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Select Your Subscription Plan</h1>
+    
+    <select id="planSelect">
+      <option value="basic">Basic - $5/month</option>
+      <option value="standard">Standard - $10/month</option>
+      <option value="premium">Premium - $20/month</option>
+    </select>
+
+    <br><br>
+    
+    <button onclick="displayCost()">Get Subscription Cost</button>
+
+    <div id="costResult" class="result"></div>
+  </div>
+
+  <script>
+    function getSubscriptionCost(plan) {
+      let cost;
+      switch (plan.toLowerCase()) {
+        case 'basic':
+          cost = "$5 per month";
+          break;
+        case 'standard':
+          cost = "$10 per month";
+          break;
+        case 'premium':
+          cost = "$20 per month";
+          break;
+        default:
+          cost = "Invalid subscription plan selected.";
+      }
+      return cost;
+    }
+
+    function displayCost() {
+      const selectedPlan = document.getElementById("planSelect").value;
+      const cost = getSubscriptionCost(selectedPlan);
+      document.getElementById("costResult").textContent = `You selected: ${cost}`;
+    }
+  </script>
+
+</body>
+</html>
