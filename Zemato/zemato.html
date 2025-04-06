@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- Zomato logo in title tab -->
+	<link rel="icon" href="./Images/ZomatoLogo.jpg" ; />
+
+	<!-- fontawesome.com icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+		integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- Poppins font by google fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<title>Zomato Landing Page Clone</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		body {
+			background: rgb(255, 251, 247);
+			margin-bottom: -32px;
+		}
+
+		/* Hero section */
+
+		.hero__section {
+			background-image: url('heroSectionBackground.png');
+			height: 400px;
+			background-size: cover;
+			background-position: center;
+			position: relative;
+		}
+
+		.navbar {
+			display: flex;
+			height: 40px;
+			align-items: center;
+			justify-content: space-between;
+			padding-left: 80px;
+			padding-right: 60px;
+			font-size: 17px;
+		}
+
+		.navbar a {
+			color: white;
+		}
+
+		.navbar a:hover {
+			transform: scale(1.02);
+		}
+
+		.navbar__menu_container {
+			display: flex;
+			gap: 22px;
+		}
+
+		.navbar__menu_container .user_icon {
+			display: flex;
+			height: 25px;
+			width: 25px;
+			border: 2px solid white;
+			border-radius: 50%;
+			align-items: center;
+			justify-content: center;
+			display: none;
+		}
+
+
+		.hero__section_container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 25px;
+			height: calc(400px - 40px);
+		}
+
+		.hero__section_logo {
+			height: 116px;
+			width: 388px;
+		}
+
+
+		.hero__section_heading {
+			color: white;
+			word-spacing: 3px;
+			font-size: 30px;
+			font-weight: 380;
+		}
+
+		.hero__section_container_input {
+			background: white;
+			border-radius: 10px;
+			width: 45%;
+			padding: 7px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 10px;
+		}
+
+		#location_icon {
+			color: rgb(239, 79, 95);
+			margin-top: -4px;
+		}
+
+		#search_icon {
+			color: rgb(239, 79, 95);
+			margin-right: 3px;
+		}
+
+		.hero__section_input_location,
+		.hero__section_input_search {
+			border: none;
+			padding-top: 4px;
+			padding-bottom: 4px;
+		}
+
+
+		.hero__section_input_location {
+			width: 35%;
+			border-right: 2px solid #C0C0C0;
+			color: gray;
+			font-size: 12.9px;
+		}
+
+		.hero__section_input_search {
+			width: 65%;
+		}
+
+		/* Media Queries for Hero Section */
+
+		@media only screen and (max-width: 685px) {
+			.navbar__menu_container .user_icon {
+				display: flex;
+			}
+
+			.link {
+				display: none;
+			}
+
+			.hero__section {
+				height: 300px;
+			}
+
+			.hero__section_container {
+				flex-direction: column;
+				background-color: transparent;
+				width: 100%;
+				height: calc(300px - 116px);
+			}
+
+			.hero__section_logo {
+				height: 60px;
+				width: 200px;
+				margin-top: 20px;
+			}
+
+			.input_container_location,
+			.input_container_search {
+				padding: 18px;
+				border-radius: 10px;
+				width: 200px;
+			}
+
+			.hero__section_heading {
+				font-size: 18px;
+				width: 400px;
+			}
+		}
+
+		@media only screen and (max-width: 400px) {
+			.hero__section {
+				width: 119%
+			}
+
+			.hero__section_heading {
+				font-size: 18px;
+				word-spacing: 0px;
+				margin-left: 47px;
+			}
+
+			.hero__section_container {
+				width: 102%;
+				height: 69%;
+			}
+		}
+
+		/* Cards section */
+
+		.container_cards {
+			margin: 3rem auto;
+			width: 90%;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 15px;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.we_offer__cards {
+			border-radius: 20px;
+			overflow: hidden;
+		}
+
+		.we_offer__cards:hover {
+			transition: all 0.2s ease;
+			transform: scale(1.01);
+			border: 1px solid grey;
+			cursor: pointer;
+			box-shadow: 0 0 15px 5px #A0A0A0;
+		}
+
+		.we_offer__cards img {
+			width: 100%;
+			height: 160px;
+			object-fit: cover;
+			object-position: center;
+		}
+
+		.we_offer__cards_content {
+			padding: 5px;
+		}
+
+		.we_offer__cards_content h2 {
+			font-size: 20px;
+			font-weight: 500;
+		}
+
+		.we_offer__cards_content p {
+			font-size: 12.5px;
+			font-weight: 400;
+		}
+
+		/* Collections section */
+
+		.container_collections {
+			margin: 3rem auto;
+			width: 90%;
+		}
+
+		.container_collections h1 {
+			font-weight: 600;
+		}
+
+		.sub_heading__container {
+			font-size: 15px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 30px;
+			flex-wrap: wrap;
+		}
+
+		.sub_heading__container span:nth-child(2) {
+			color: rgb(239, 79, 95);
+			font-size: 13px;
+			cursor: pointer;
+		}
+
+		.sub_heading__container span[id=span]:hover {
+			text-decoration: underline red;
+			color: red;
+		}
+
+		.collections__cards_container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 20px;
+			margin-top: 2.5rem;
+		}
+
+		.cards {
+			height: 300px;
+			min-width: 240px;
+			background-size: cover;
+			background-position: center;
+			border-radius: 20px;
+			position: relative;
+		}
+
+		.cards:hover {
+			transform: scale(1.01);
+			box-shadow: 0 0 15px 5px #A0A0A0;
+			cursor: pointer;
+		}
+
+		.card1 {
+			background-image: url('collection1.jpg');
+		}
+
+		.card2 {
+			background-image: url('collection2.jpg');
+		}
+
+		.card3 {
+			background-image: url('collection3.jpg');
+		}
+
+		.card4 {
+			background-image: url('collection4.jpg');
+		}
+
+		.overlay {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 10px;
+			background: linear-gradient(0deg, rgba(80, 80, 80, 0.8)0%, rgba(0, 0, 0, 0)50%, rgba(0, 0, 0, 0)100%);
+			z-index: 5;
+		}
+
+		.collections__content {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			color: white;
+			padding-left: 8px;
+			padding-bottom: 12px;
+			font-size: 0.9rem;
+			z-index: 6;
+		}
+
+		/* This is for get the App section */
+
+		.container__get_the_App {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: rgb(255, 251, 247);
+			width: 90%;
+			margin: 3rem auto;
+		}
+
+		.semi_container {
+			width: 80%;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1.5rem;
+			justify-content: center;
+			align-items: center;
+			background: white;
+		}
+
+		.semi_container__left {
+			flex: 1.5;
+		}
+
+		.semi_container__left img {
+			width: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+
+		.semi_container__right {
+			flex: 3;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			margin-left: 10px;
+		}
+
+		.semi_container__right h1 {
+			font-size: 2rem;
+			font-weight: 500;
+		}
+
+		.semi_container__right p {
+			font-size: 0.9rem;
+			letter-spacing: 0.5px;
+			font-weight: 500;
+		}
+
+		.semi_container__right .radio_button__container {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.semi_container__right .radio_button__container div {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 10px;
+		}
+
+		.semi_container__right .radio_button__container div input {
+			height: 15px;
+			width: 15px;
+			accent-color: rgb(239, 79, 95);
+		}
+
+		.input__container {
+			display: flex;
+			gap: 0.6rem;
+			flex-wrap: wrap;
+		}
+
+		.input__container button,
+		.input__container input {
+			padding: 10px 12px;
+		}
+
+		.input__container input {
+			flex: auto;
+			border: 1.5px solid gray;
+			border-radius: 10px;
+			outline: none;
+		}
+
+		.input__container button {
+			border: none;
+			border-radius: 5px;
+			color: white;
+			background: rgb(239, 79, 95);
+			cursor: pointer;
+		}
+
+		.input__container button:hover {
+			background: red;
+		}
+
+		.download_app__container {
+			display: flex;
+			flex-direction: column;
+			gap: 0.7rem;
+		}
+
+		.download_app__container h5 {
+			font-weight: 450;
+			font-size: 0.8rem;
+			color: gray;
+		}
+
+		.download_app__container div {
+			display: flex;
+			gap: 1rem;
+		}
+
+		.download_app__container div img {
+			cursor: pointer;
+			width: 30%;
+		}
+
+		/* Media Queries for get App section */
+
+		@media only screen and (max-width: 1300px) {
+
+			.container__get_the_App .semi_container .semi_container__left,
+			.container__get_the_App .semi_container .semi_container__right {
+				flex: 1;
+			}
+
+			.container__get_the_App .semi_container {
+				width: 80%;
+			}
+		}
+
+		@media only screen and (max-width: 900px) {
+			.container__get_the_App {
+				padding: 2rem 0;
+			}
+
+			.container__get_the_App .semi_container {
+				width: 95%;
+				flex-direction: column;
+			}
+
+			.container__get_the_App .semi_container .semi_container__left img {
+				height: 300px;
+			}
+		}
+
+		/* This is for Explore places section */
+
+		.explore_places__container {
+			width: 90%;
+			margin: 3rem auto;
+		}
+
+		.explore_places__container .sub_container {
+			width: 90%;
+		}
+
+		.explore_places__container .sub_container div h1 {
+			font-weight: 600;
+		}
+
+		.explore_places__container .sub_container div span {
+			font-size: 14px;
+		}
+
+		.drop_down__container {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			margin: 2rem auto;
+		}
+
+		.drop_down_menu {
+			height: 50px;
+			width: 1100px;
+			border-radius: 10px;
+			padding: 15px;
+		}
+
+		/* Media Queries for explore section */
+
+		@media only screen and (max-width: 900px) {
+			.drop_down_menu {
+				width: 600px;
+			}
+		}
+
+		@media only screen and (max-width: 685px) {
+			.drop_down_menu {
+				width: 400px;
+			}
+		}
+
+		/* This is for the footer section */
+
+		.footer__container {
+			width: 90%;
+			margin: 4rem auto;
+		}
+
+		.footer_section1 {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-between;
+			margin: auto;
+			width: 70;
+		}
+
+		.footer_section1 img {
+			width: 130px;
+		}
+
+		.section1__button_container button {
+			padding: 7px;
+			border: 1px solid gray;
+			border-radius: 8px;
+			cursor: pointer;
+		}
+
+		.section1__button_container button:nth-child(2) {
+			margin-left: 7px;
+		}
+
+		.navigation_container {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			margin: auto;
+			gap: 1rem;
+			padding: 3rem 0;
+		}
+
+		.link_container {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.link_container h5 {
+			font-size: 16px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		.link_container_anchors a {
+			display: flex;
+			flex-direction: column;
+			text-decoration: none;
+			text-transform: none;
+			color: gray;
+			gap: 5px;
+			font-weight: 400;
+			margin-bottom: 4px;
+		}
+
+		.link_container_anchors a:hover {
+			color: black;
+		}
+
+		.link_container h5[id=enterprises] {
+			margin-top: 10px;
+			letter-spacing: 1px;
+		}
+
+		.social_media_logos {
+			margin: 18px 30px;
+		}
+
+		.social_media_logos img {
+			width: 80%;
+			margin-left: -28px;
+			cursor: pointer;
+		}
+
+		.social_media_logos img[id=img2] {
+			margin-top: 5px;
+		}
+
+		.social_media_icon_buttons button {
+			background: black;
+			border: none;
+			border-radius: 50%;
+			height: 22px;
+			width: 22px;
+			cursor: pointer;
+			color: white;
+		}
+
+		.social_media_icon_buttons button i {
+			display: flex;
+			font-size: 13px;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.disclaimer {
+			font-size: 13px;
+			color: gray;
+			margin-top: auto;
+			border-top: 1px solid #C0C0C0;
+			padding-top: 20px;
+		}
+
+		/* Media queries for footer section */
+
+		@media only screen and (max-width: 900px) {
+			.navigation_container {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+
+		@media only screen and (max-width: 500px) {
+			.navigation_container {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		@media only screen and (max-width: 320px) {
+			.navigation_container {
+				grid-template-columns: repeat(1, 1fr);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!-- This is for hero section -->
+	<section class="hero__section">
+		<header>
+			<nav class="navbar">
+				<a href="#">Get the App</a>
+				<div class="navbar__menu_container">
+					<a href="#" class="link">Investor Relations</a>
+					<a href="#" class="link">Add Restaurants</a>
+					<a href="#" class="link">Login</a>
+					<a href="#" class="link">Sign Up</a>
+					<a href="#" class="user_icon"><i class="fa-solid fa-user"></i></a>
+				</div>
+			</nav>
+		</header>
+		<div class="hero__section_container">
+			<img src="heroSectionLogo.png" alt="Zomato Logo" class="hero__section_logo" />
+			<h1 class="hero__section_heading">Discover the best food & drinks in Pune</h1>
+			<div class="hero__section_container_input">
+				<i class="fa-sharp fa-solid fa-location-dot" id="location_icon"></i>
+				<select class="hero__section_input_location">
+					<option>Pune</option>
+					<option>Mumbai</option>
+					<option>Banglore</option>
+					<option>Delhi</option>
+				</select>
+				<i class="fa-solid fa-magnifying-glass" id="search_icon"></i>
+				<input class="hero__section_input_search" type="text"
+					placeholder="Search for a restaurant, cuisine or a dish" />
+			</div>
+		</div>
+	</section>
+	<!-- This is for cards that zomato offer -->
+	<section class="container_cards">
+
+		<div class="we_offer__cards">
+			<img src="item1.png" alt="card1 image" />
+			<div class="we_offer__cards_content">
+				<h2>Order Online</h2>
+				<p>Stay home and order to your doorstep</p>
+			</div>
+		</div>
+
+		<div class="we_offer__cards">
+			<img src="item2.png" alt="card1 image" />
+			<div class="we_offer__cards_content">
+				<h2>Dining</h2>
+				<p>Visit amazing restaurants and cafes</p>
+			</div>
+		</div>
+
+		<div class="we_offer__cards">
+			<img src="item3.png" alt="card1 image" />
+			<div class="we_offer__cards_content">
+				<h2>Nightlife and clubs</h2>
+				<p>Spend leisure time enjoying the nightlife of Pune</p>
+			</div>
+		</div>
+
+		<div class="we_offer__cards">
+			<img src="item4.png" alt="card1 image" />
+			<div class="we_offer__cards_content">
+				<h2>Takeaway services</h2>
+				<p>We ensure timely delivery to our customers</p>
+			</div>
+		</div>
+
+	</section>
+	<!-- This is for collection section -->
+	<section class="container_collections">
+		<h1>Collections</h1>
+		<div class="sub_heading__container">
+			<span>Explore curated lists of top restaurants, cafes, pubs in Pune based on trends</span>
+			<span id="span">All collections in Pune</span>
+		</div>
+		<div class="collections__cards_container">
+
+			<div class="cards card1">
+				<div class="overlay"></div>
+				<div class="collections__content">
+					<h4>Live Cricket Screening</h4>
+					<span>56 places</span>
+				</div>
+			</div>
+
+			<div class="cards card2">
+				<div class="overlay"></div>
+				<div class="collections__content">
+					<h4>Koregaon Park specials</h4>
+					<span>12 places</span>
+				</div>
+			</div>
+
+			<div class="cards card3">
+				<div class="overlay"></div>
+				<div class="collections__content">
+					<h4>Newly opened Restaurants</h4>
+					<span>36 places</span>
+				</div>
+			</div>
+
+			<div class="cards card4">
+				<div class="overlay"></div>
+				<div class="collections__content">
+					<h4>Trending Pubs Near me</h4>
+					<span>16 places</span>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	<!-- This is for get the App section -->
+	<section class="container__get_the_App">
+		<div class="semi_container">
+			<div class="semi_container__left">
+				<img src="mobileBanner.png" alt="mobile image" />
+			</div>
+			<div class="semi_container__right">
+				<h1>Get the Zomato App</h1>
+				<p>We will send you a link, open it and download the app now</p>
+				<div class="radio_button__container">
+					<div>
+						<input type="radio" id="email" name="downloadApp" />
+						<label for="email" style="font-size:14px;">Email</label>
+					</div>
+					<div>
+						<input type="radio" id="phone" name="downloadApp" />
+						<label for="phone" style="font-size:14px;">Phone</label>
+					</div>
+				</div>
+				<div class="input__container">
+					<input type="text" placeholder="Email" />
+					<button>Share App Link</button>
+				</div>
+				<div class="download_app__container">
+					<h5>Download App From</h5>
+					<div>
+						<img src="appleStore.png" alt="Apple store" />
+						<img src="playStore.png" alt="Play store" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- this is for Explore places section -->
+	<section class="explore_places__container">
+		<div class="sub_container">
+			<div>
+				<h1>Explore Options Near Me</h1>
+				<span>Explore the restaurants and cuisines across various cities under our service</span>
+			</div>
+			<div class="drop_down__container">
+				<div>
+					<select class="drop_down_menu">
+						<option>Popular cuisines Near Me</option>
+						<option>Open Window Cafe Bistro</option>
+						<option>Gauri's Kitchen</option>
+						<option>Food Moments</option>
+						<option>Senses - Marriott Suites Pune</option>
+					</select>
+				</div>
+				<div>
+					<select class="drop_down_menu">
+						<option>Popular Restaurant Near Me</option>
+						<option>Trishna Resto And Bar</option>
+						<option>Pimlico</option>
+						<option>Green Thing</option>
+						<option>Kava Kitchen</option>
+					</select>
+				</div>
+				<div>
+					<select class="drop_down_menu">
+						<option>Cities We Deliver To</option>
+						<option>Pune</option>
+						<option>Mumbai</option>
+						<option>Banglore</option>
+						<option>Delhi</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- This is for footer section -->
+	<footer class="footer__container">
+		<div class="footer_section1">
+			<img src="./Images/logo.png" alt="zomato logo" />
+			<div class="section1__button_container">
+				<button>
+					<img src="IndianFlag.png" alt="Indian Flag" style="width: 16px; height: 16px" />
+					<select style="border: none; background: #e8e8e8; cursor: pointer">
+						<option>India</option>
+						<option>United States</option>
+						<option>Australia</option>
+						<option>New Zealand</option>
+						<option>Spain</option>
+						<option>England</option>
+					</select>
+				</button>
+				<button>
+					<i class="fa fa-globe"></i>
+					<select style="border: none; background: #e8e8e8; cursor: pointer">
+						<option>English</option>
+						<option>Español</option>
+						<option>Čeština</option>
+						<option>Slovenčina</option>
+						<option>Polish</option>
+						<option>Italian</option>
+					</select>
+				</button>
+			</div>
+		</div>
+		<div class="navigation_container">
+			<div class="link_container">
+				<h5>About Zomato</h5>
+				<div class="link_container_anchors">
+					<a href="#">Who We Are</a>
+					<a href="#">Blog</a>
+					<a href="#">Work With Us</a>
+					<a href="#">Investor Relations</a>
+					<a href="#">Report Fraud</a>
+					<a href="#">Contact Us</a>
+				</div>
+			</div>
+
+			<div class="link_container">
+				<h5>Zomaverse</h5>
+				<div class="link_container_anchors">
+					<a href="#">Zomato</a>
+					<a href="#">Blinkit</a>
+					<a href="#">Feeding India</a>
+					<a href="#">Hyperpure</a>
+					<a href="#">Zomaland</a>
+				</div>
+			</div>
+
+			<div class="link_container">
+				<h5>For Restaurants</h5>
+				<div class="link_container_anchors">
+					<a href="#">Partner With Us</a>
+					<a href="#">Apps For You</a>
+				</div>
+				<h5 id="enterprises">For Enterprises</h5>
+				<div class="link_container_anchors">
+					<a href="#">Zomato For Work</a>
+				</div>
+			</div>
+
+			<div class="link_container">
+				<h5>Learn More</h5>
+				<div class="link_container_anchors">
+					<a href="#">Privacy</a>
+					<a href="#">Security</a>
+					<a href="#">Terms</a>
+					<a href="#">Sitemap</a>
+				</div>
+			</div>
+
+			<div class="link_container">
+				<h5>Social Links</h5>
+				<div class="social_media_icon_buttons">
+					<button><i class="fa-brands fa-linkedin-in"></i> </button>
+					<button><i class="fa-brands fa-instagram"></i></button>
+					<button><i class="fa-brands fa-twitter"></i></button>
+					<button><i class="fa-brands fa-facebook"></i></button>
+					<button><i class="fa-brands fa-youtube"></i></button>
+					<div class="social_media_logos">
+						<img src="appleStore.png" alt="Apple store" />
+						<img src="playStore.png" alt="Play store" id="img2" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="disclaimer">
+			By continuing past this page, you agree to our Terms of Service, Cookie Policy,
+			Privacy Policy and Content Policies. All trademarks are properties of their respective owners.
+			2008-2023 © Zomato™ Ltd. All rights reserved.
+		</div>
+	</footer>
+</body>
+
+</html>
